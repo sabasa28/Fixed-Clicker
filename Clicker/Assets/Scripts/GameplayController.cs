@@ -5,7 +5,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Game : MonoBehaviour
+public class GameplayController : MonoBehaviour
 {
 	public GameObject click01;
 	public GameObject click02;
@@ -46,26 +46,7 @@ public class Game : MonoBehaviour
 
 	public void Click01()
 	{
-		coso.sc += 1;
+		score += 1;
 	}
 
-	public void Click02()
-	{
-		coso.sc += 2;
-	}
-
-	public void Click03()
-	{
-		coso.sc += 5;
-	}
-
-	public void Click04()
-	{
-		coso.sc += 10;
-	}
-
-	public void Click05()
-	{
-		coso.sc += 50;
-	}
 }

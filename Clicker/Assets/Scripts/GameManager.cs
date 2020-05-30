@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class coso : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
 	
     bool won = false;
@@ -13,13 +13,8 @@ public class coso : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-	    if (sc > 1000)
-	    {
-			SceneManager.LoadScene(2);
-	    }
-
-	}
+    void SwitchToEndscreen()
+    { 
+		SceneManager.LoadScene(2);
+    }
 }
