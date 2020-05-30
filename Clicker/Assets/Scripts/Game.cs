@@ -11,53 +11,37 @@ public class Game : MonoBehaviour
 	public GameObject click02;
 	public GameObject click03;
 
+	int score = 0;
+
 	public TMP_Text t;
 
 	public GameObject click04;
 
-	// Start is called before the first frame update
 	void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
-	    t.text = "Gold:" + coso.sc;
+	    t.text = "Gold:" + score;
 
-	    if (coso.sc > 10)
+	    if (score > 10)
 	    {
 		    click01.SetActive(true);
 	    }
-	    else
-	    {
-		    click01.SetActive(false);
-	    }
-		if (coso.sc > 50)
+		if (score > 50)
 	    {
 		    click02.SetActive(true);
 		}
-	    else
-	    {
-			click02.SetActive(false);
-		}
-		if (coso.sc > 100)
+		if (score > 100)
 		{
 			click03.SetActive(true);
 		}
-		else
-		{
-			click03.SetActive(false);
-		}
-	    if (coso.sc > 200)
+	    if (score > 200)
 	    {
 		    click04.SetActive(true);
 	    }
-	    else
-	    {
-		    click04.SetActive(false);
-		}
 	}
 
 	public void Click01()
