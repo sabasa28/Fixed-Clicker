@@ -1,13 +1,16 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameplayButton : MonoBehaviour
 {
     public int scorePerClick;
+    public int scoreToActivate;
     float speed = 0.0f;
     public float heightToTravel;
     public float witdhToTravel;
+    public Action <int> AddScore;
 
     float minY;
     float maxY;
@@ -41,8 +44,6 @@ public class GameplayButton : MonoBehaviour
             case Dificulty.level1:
                 speed = 150.0f;
                 StartCoroutine(Move(false));
-
-                Debug.Log(minY);
                 break;
             case Dificulty.level2:
                 speed = 150.0f;
@@ -73,6 +74,11 @@ public class GameplayButton : MonoBehaviour
 
     }
 
+    public void OnClick()
+    {
+        AddScore(scorePerClick);
+    }
+
     IEnumerator Move(bool horizontally)
     {
         Vector3 dir;
@@ -98,8 +104,8 @@ public class GameplayButton : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(2);
-            if (horizontally) transform.localPosition = new Vector3(Random.Range(minX, maxX), Random.Range(minY, maxY), transform.localPosition.z);
-            else transform.localPosition = new Vector3(transform.localPosition.x, Random.Range(minY, maxY), transform.localPosition.z);
+            if (horizontally) transform.localPosition = new Vector3(UnityEngine.Random.Range(minX, maxX), UnityEngine.Random.Range(minY, maxY), transform.localPosition.z);
+            else transform.localPosition = new Vector3(transform.localPosition.x, UnityEngine.Random.Range(minY, maxY), transform.localPosition.z);
         }
     }
 }

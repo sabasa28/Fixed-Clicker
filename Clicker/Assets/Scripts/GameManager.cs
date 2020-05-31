@@ -5,14 +5,30 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-	
-    bool won = false;
-    // Start is called before the first frame update
-    void Start()
+    public bool won = false;
+    private static GameManager instance;
+    public static GameManager Get()
     {
-        
+        return instance;
+    }
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+    private void Start()
+    {
     }
 
+    public void OnWin()
+    {
+        SwitchToEndscreen();
+    }
     void SwitchToEndscreen()
     { 
 		SceneManager.LoadScene(2);
