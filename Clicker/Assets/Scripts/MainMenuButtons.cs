@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,22 +7,29 @@ public class MainMenuButtons: MonoBehaviour
 {
 	public GameObject Menu;
 	public GameObject Credits;
+	Action SwitchToGameplayScene;
+	Action CloseGame;
 
-	public void SwitchToGameplayScene()
-	{
-		SceneManager.LoadScene(1);
+	private void Start()
+    {
+		SwitchToGameplayScene = GameManager.Get().SwitchToGameplayScene;
+		CloseGame = GameManager.Get().CloseGame;
 	}
-	public void ShowCredits()
+
+    public void OnClickStartGameBtn()
+	{
+		SwitchToGameplayScene();
+	}
+	public void OnClickCreditsBtn()
 	{
 		Menu.SetActive(false);
 		Credits.SetActive(true);
 	}
-	public void CloseGame()
+	public void OnClickQuitBtn()
 	{
-		Debug.Log("Game Closed.");
-		Debug.Break();
+		CloseGame();
 	}
-	public void ShowMenu()
+	public void OnClickBackToMenuBtn()
 	{
 		Menu.SetActive(true);
 		Credits.SetActive(false);

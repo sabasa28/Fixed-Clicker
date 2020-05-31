@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public bool won = false;
     private static GameManager instance;
     public static GameManager Get()
     {
@@ -21,16 +20,26 @@ public class GameManager : MonoBehaviour
         instance = this;
         DontDestroyOnLoad(gameObject);
     }
-    private void Start()
-    {
-    }
 
     public void OnWin()
     {
         SwitchToEndscreen();
     }
+    public void SwitchToMenuScene()
+    {
+        SceneManager.LoadScene(0);
+    }
+    public void SwitchToGameplayScene()
+    {
+        SceneManager.LoadScene(1);
+    }
     void SwitchToEndscreen()
     { 
 		SceneManager.LoadScene(2);
+    }
+    public void CloseGame()
+    {
+        Debug.Log("Game Closed.");
+        Debug.Break();
     }
 }
